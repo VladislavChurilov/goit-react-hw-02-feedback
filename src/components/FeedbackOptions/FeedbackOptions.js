@@ -1,10 +1,22 @@
 import styles from '../Feedback.module.css';
+import PropTypes from 'prop-types';
 
-const FeedbackOptions = ({onGoodIncr, onNeutrIncr, onBedIncr}) => (
-    <div>
-        <button className={styles.feedbackOptions} type="button" onClick={onGoodIncr} >Good</button>
-        <button className={styles.feedbackOptions} type="button" onClick={onNeutrIncr} >Neutral</button>
-        <button className={styles.feedbackOptions} type="button" onClick={onBedIncr}>Bad</button>        
-    </div>
+const FeedbackOptions = ({options, onIncr}) => (
+   <div>
+    {options.map((option) =>(           
+        <button 
+        key={option} 
+        className={styles.feedbackOptions} 
+        type="button" 
+        onClick={()=>onIncr(option)}>
+        {option}
+        </button>           
+        ))}
+    </div>     
 )
+FeedbackOptions.propTypes = {
+    options: PropTypes.arrayOf(PropTypes.string).isRequired,
+    onIncr: PropTypes.func.isRequired,
+  };
+
 export default FeedbackOptions;

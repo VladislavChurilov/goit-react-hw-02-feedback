@@ -1,4 +1,5 @@
 import styles from '../Feedback.module.css';
+import PropTypes from 'prop-types';
 
 const Statistics = ({good, neutral, bad, total, percentege}) => (
     <div>
@@ -12,5 +13,12 @@ const Statistics = ({good, neutral, bad, total, percentege}) => (
     :<span className={styles.counter} >Percentage: </span>}
     </div>
 )
+Statistics.propTypes = {
+    good:PropTypes.number.isRequired,
+    neutral:PropTypes.number.isRequired,
+    bad:PropTypes.number.isRequired,
+    total:PropTypes.number.isRequired,
+    percentege:PropTypes.number.isRequired
+}
 export default Statistics;
 
